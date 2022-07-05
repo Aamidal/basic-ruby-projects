@@ -6,7 +6,8 @@ A basic cipher in Ruby
 -Suetonius, *The Twelve Caesars*<br>
 ## Features
 
-The function accepts a string to encode, and a shift factor, which represents the number each letter will be shifted by. Positive values shift to the right, and negative to the left. IE:
+The function accepts a string to encode, and a key in the form of an integer, indicating the number of letters to shift the message by, and the direction (1 : a->b, -1 : a->z).
+
 ```
 caesar_cipher("Stephen Maturin is a spy!", 1)
 => "Tufqifo Nbuvsjo jt b tqz!"
