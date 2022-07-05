@@ -1,38 +1,19 @@
 #caesar_cipher.rb
 
-def caesar_cipher(string, shift_value)
-  alphabet = []
-  26.times {|i| alphabet.push((97+i).chr)}
-  characters = string.split("")
-  shifted_msg = []
-  characters.each do |char|
-    if alphabet.include?(char.downcase)
-      shift_index = wrap_index(alphabet.find_index(char.downcase) + shift_value)
-      if char.ord.between?(65, 90)
-        shifted_msg.push(alphabet[shift_index].upcase)
-      else
-        shifted_msg.push(alphabet[shift_index])
-      end
+def caesar_cipher(string, key)
+  encoded_msg = ''
+  string.each_char do |char|
+    enc_char = char.ord < 91 ? 65 : 97
+    if char.ord.between?(65, 90) || char.ord.between?(97, 122)
+      shift = (((char.ord - enc_char) + key) % 26) + enc_char
+      encoded_msg += shift.chr
     else 
-      shifted_msg.push(char)
+      encoded_msg += char
     end
   end
-  shifted_msg.join("")
+  encoded_msg
 end
 
-def wrap_index(shift_index)
-  index = shift_index
-  if index < 0
-    index = shift_index % -26
-  else
-    index = shift_index % 26
-  end
-end
-
-# Testing
-# 26.times {|i| caesar_cipher("Stephen Maturin is a spy!", i)}
-# 26.times {|i| caesar_cipher("Stephen Maturin is a spy!", -i)}
-# 26.times {|i| caesar_cipher("ABCDEFGHIJKLMNOPQRSTUVWXYZ", i)}
-# 26.times {|i| caesar_cipher("ABCDEFGHIJKLMNOPQRSTUVWXYZ", -i)}
+# 26.times {|i| puts caesar_cipher("Stephen Maturin is a spy!", i)}
 
       
