@@ -17,8 +17,6 @@ def caesar_cipher(string, shift_value)
       shifted_msg.push(char)
     end
   end
-  puts "Shifting #{string} by #{shift_value} letters:"
-  puts shifted_msg.join("")
   shifted_msg.join("")
 end
 
