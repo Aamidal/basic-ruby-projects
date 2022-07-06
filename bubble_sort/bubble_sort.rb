@@ -5,7 +5,7 @@ def bubble_sort(array)
     new_n = 0
     for i in 1..n-1 do
       if a[i-1] > a[i] then
-        array[i-1], array[i] = array[i], array[i-1]
+        a[i-1], a[i] = a[i], a[i-1]
         new_n = i
       end
     end
