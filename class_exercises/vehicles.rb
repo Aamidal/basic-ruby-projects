@@ -7,9 +7,10 @@ end
 class Vehicle
   attr_accessor :color
   attr_reader :make, :year, :model, :type, :age
+
   @@vehicle_count = 0
 
-  def self.get_number_of_vehicles
+  def self.number_of_vehicles
     "This program has created #{@@vehicle_count} vehicles."
   end
 
@@ -31,6 +32,7 @@ class Vehicle
     self.color = color
     "A few cans of cheap spray-paint later, your #{type} is now #{color}!"
   end
+
   def speed_up(num)
     @speed += num
     "You increase your speed from #{@speed-num}kph to #{@speed}kph."
@@ -40,12 +42,12 @@ class Vehicle
     @speed -= num
     "You pump the brakes and slow from #{@speed+num}kph to #{@speed}kph."
   end
-  
+
   def current_speed
     if @speed > 0
       "You are cruising at #{@speed}kph."
     else
-      "You are currently stopped."
+      'You are currently stopped.'
     end
   end
 
@@ -68,16 +70,16 @@ class Vehicle
   end
 
   private
+
   def get_age
     Time.now.year.to_i - year.to_i
   end
 end
 
-
 class Bike < Vehicle
   def initialize(make, year, model, color)
     super
-    @type = "bike"
+    @type = 'bike'
   end
 end
 
@@ -85,6 +87,6 @@ class Car < Vehicle
   include Gaspowered
   def initialize(make, year, model, color)
     super
-    @type = "car"
+    @type = 'car'
   end
 end
