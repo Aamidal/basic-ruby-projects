@@ -1,2 +1,2 @@
 # Class exercises
-Two simple classes
+Simple classes
