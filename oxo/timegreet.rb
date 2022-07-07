@@ -1,20 +1,23 @@
+# frozen_string_literal:true
+
+# Gets the general time of day
 module Timegreet
-  #Gets the general time of day
   T = Time.now
-  def Timegreet.what_time?
-    time_of_day = "day"
+
+  def self.what_time?
     case T.hour
-    when 4...12 
-      time_of_day = "morning"
-    when 11...19
-      time_of_day = "afternoon"
+    when 4...12
+      'morning'
+    when 12
+      'day'
+    when 12...19
+      'afternoon'
     else
-      time_of_day = "evening"
+      'evening'
     end
-    time_of_day
   end
 
-  def Timegreet.say_hi
+  def self.say_hi
     "Good #{what_time?}!"
   end
 end
